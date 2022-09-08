@@ -51,7 +51,11 @@ app.post('/login', (req, res) => {
 
                         const token = jwt.sign(obj, process.env.ACCESS_TOKEN_SECRET);
                     console.log(obj)
-                    res.json({ token: token });
+                    const usr = {
+                        token: token,
+                        id: rows[0].id
+                    };
+                    res.json(usr);
                     console.log("Posala token");  
                         return;
                     }else{
@@ -133,3 +137,4 @@ app.post('/registration', (req, res) => {
 
 
 app.listen(8087);
+
